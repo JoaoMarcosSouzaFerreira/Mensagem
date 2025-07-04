@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma mensagem para você...</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilos Gerais (sem alterações) */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdfaf6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background-color: #ffffff;
+            max-width: 650px;
+            width: 100%;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 30px 40px;
+            transition: all 0.5s ease;
+        }
+        .dog-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1 { color: #333; font-size: 2em; }
+        h2 { color: #444; }
+        p { color: #666; font-size: 1.1em; line-height: 1.6; }
+        #choice-section {
+            margin-top: 30px;
+            transition: opacity 0.5s ease;
+        }
+        .choice-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .btn-yes { background-color: #28a745; color: white; }
+        .btn-no { background-color: #dc3545; color: white; }
+        #yes-section, #no-section, #thank-you-section {
+            display: none;
+        }
+        #yes-section { text-align: left; }
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            columns: 2; 
+        }
+        .checklist li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        .checklist input[type="checkbox"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            accent-color: #007bff;
+        }
+        .checklist label {
+            color: #555;
+            font-size: 1em;
+        }
+        .submit-button {
+            display: block; width: fit-content; margin: 40px auto 10px; padding: 15px 30px; background-color: #007bff; color: #ffffff; border: none; text-decoration: none; font-weight: bold; font-size: 1.1em; border-radius: 50px; text-align: center; cursor: pointer; transition: all 0.3s ease;
+        }
+        .submit-button:hover { background-color: #0056b3; transform: scale(1.05); }
+        .submit-button:disabled { background-color: #aaa; cursor: not-allowed; }
+        .whatsapp-button { display: inline-block; margin-top: 20px; padding: 15px 30px; background-color: #25D366; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 50px; transition: all 0.3s ease; }
+        .whatsapp-button:hover { background-color: #128C7E; transform: scale(1.05); }
+        
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .container { border-radius: 0; margin: 0; min-height: 100vh; }
+            .content { padding: 25px 20px; }
+            .checklist { columns: 1; } 
+            h1 { font-size: 1.8em; }
+            p { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-container">
+        
+        <div id="intro-section">
+            <img src="https://i.imgur.com/Zt9Kuqa.jpeg" alt="Foto do cachorro" class="dog-photo">
+            <h1>Oi, Thayná!</h1>
+            <p>Au au! Quer dizer... oi! Meu nome é <strong>Eistein</strong> e sou o fiel escudeiro do <strong>João</strong>...</p>
+            <p>
+            Eu vi ele sorrindo enquanto olhava sua foto com o cabelo cortado há algumas semanas e ele parecia muito feliz desde aquela noite do cinema. Nas últimas semanas ele ficou meio enrolado com os pedidos do orientador dele e pra piorar ele não conseguiu passar em alguns processos seletivos que ele havia inscrito, ficou um pouco chateado e não queria conversar com ninguém, <strong>nem comigo!</strong> 
+            </p>
+            <p>
+                Hoje mais cedo ele me disse que queria conversar com você mas estava com vergonha de te chamar depois de ficar um tempo sem mandar nada (cá entre nós, ele é meio bundão mesmo). Primeiro eu pensei que ele já estava fazendo muito errado em ainda não ter pego seu número e segundo eu não consegui pensar em mais nada porque ele começou a fazer carrinho na minha barriguinha.
+            </p>
+            <p>
+                Depois disso ele ficou encarando o teto e se perguntando se iria conseguir te encontrar novamente, sem parecer muito emocionado como na última vez.
+            </p>
+        </div>
+        
+        <div id="choice-section">
+            <p><strong>Como ele é meio lerdo para essas coisas eu, o fiel escudeiro do João, queria te perguntar se você gostaria de sair com ele de novo?</strong></p>
+            <div class="choice-buttons">
+                <button class="btn btn-yes" onclick="showYes()">Com certeza!</button>
+                <button class="btn btn-no" onclick="showNo()">Acho que não</button>
+            </div>
+        </div>
+
+        <div id="yes-section">
+            <form id="contact-form" name="encontro" data-netlify="true">
+                <h2>UAU! EU SABIA!</h2>
+                <p>Que demais! Agora preciso encontrar um jeito de avisar ele sobre isso, mas antes me dá uma patinha e marca aqui embaixo as coisas que você mais gostaria de fazer...</p>
+                <ul class="checklist">
+                    <li><input type="checkbox" id="item1" name="atividades[]" value="Jantar romântico, mas sem emocionar demais"><label for="item1">Jantar romântico, mas sem emocionar demais</label></li>
+                    <li><input type="checkbox" id="item2" name="atividades[]" value="Piquenique no parque"><label for="item2">Piquenique no parque</label></li>
+                    <li><input type="checkbox" id="item3" name="atividades[]" value="Sessão de cinema (denovo kkkk)"><label for="item3">Sessão de cinema (denovo kkkk)</label></li>
+                    <li><input type="checkbox" id="item4" name="atividades[]" value="Tomar um sorvete"><label for="item4">Tomar um sorvete</label></li>
+                    <li><input type="checkbox" id="item5" name="atividades[]" value="Conhecer algum local de Uberlândia"><label for="item5">Conhecer algum local de Uberlândia</label></li>
+                    <li><input type="checkbox" id="item6" name="atividades[]" value="Ir a um bar com música baixa e que tenha suco de abacaxi"><label for="item6">Ir a um bar com música baixa e que tenha suco de abacaxi</label></li>
+                    <li><input type="checkbox" id="item7" name="atividades[]" value="Assistir algo no Teatro"><label for="item7">Assistir algo no Teatro</label></li>
+                    <li><input type="checkbox" id="item8" name="atividades[]" value="Visitar um museu ou exposição"><label for="item8">Visitar um museu ou exposição</label></li>
+                    <li><input type="checkbox" id="item9" name="atividades[]" value="Noite de jogos de tabuleiro"><label for="item9">Noite de jogos de tabuleiro</label></li>
+                    <li><input type="checkbox" id="item10" name="atividades[]" value="Tomar um café especial"><label for="item10">Tomar um café especial</label></li>
+                    <li><input type="checkbox" id="item11" name="atividades[]" value="Ir a uma livraria"><label for="item11">Ir a uma livraria</label></li>
+                    <li><input type="checkbox" id="item12" name="atividades[]" value="Observar as estrelas"><label for="item12">Observar as estrelas</label></li>
+                    <li><input type="checkbox" id="item13" name="atividades[]" value="Revisar materia de odonto (o João é um ótimo ouvinte)"><label for="item13">Revisar materia de odonto (o João é um ótimo ouvinte)</label></li>
+                    <li><input type="checkbox" id="item14" name="atividades[]" value="Boliche"><label for="item14">Boliche</label></li>
+                    <li><input type="checkbox" id="item15" name="atividades[]" value="Levar o cachorro pra passear (eu!)"><label for="item15">Levar o cachorro pra passear (eu!)</label></li>
+                </ul>
+                <p style="text-align: center; margin-top: 30px;">Depois de escolher, é só clicar aqui embaixo...</p>
+                <button type="submit" class="submit-button">Enviar Sugestões para o João</button>
+            </form>
+        </div>
+
+        <div id="no-section">
+             <h2>Oh... entendi.</h2>
+            <p>Sem problemas! Às vezes as coisas não acontecem como a gente planeja. O importante é que você seja feliz!</p>
+            <p>Vou encher o <strong>João</strong> de lambeijos pra ele não ficar triste. Tudo de bom pra você!</p>
+        </div>
+        
+        <div id="thank-you-section">
+            <img src="https://i.imgur.com/Zt9Kuqa.jpeg" alt="Foto do cachorro" class="dog-photo">
+            <h1 style="color: #28a745;">Missão Cumprida!</h1>
+            <p>Recebi a lista! Já estou mentalizando todas as dicas para enviar para o João por telepatia canina.</p>
+            <p>Enquanto ele não decifra meus sinais, que tal você mesma dar o primeiro passo e mandar um "oi" no WhatsApp? Tenho certeza que ele vai adorar (e ficar todo bobo).</p>
+            <a href="https://wa.me/55349XXXXXXXX?text=Oi%20João!%20Recebi%20uma%20ajudinha%20do%20Eistein..." class="whatsapp-button" target="_blank">Chamar o João no WhatsApp</a>
+        </div>
+    </div>
+
+    <script>
+        const introSection = document.getElementById('intro-section');
+        const choiceSection = document.getElementById('choice-section');
+        const yesSection = document.getElementById('yes-section');
+        const noSection = document.getElementById('no-section');
+        const thankYouSection = document.getElementById('thank-you-section');
+        const mainContainer = document.getElementById('main-container');
+        const contactForm = document.getElementById('contact-form');
+
+        function showYes() {
+            introSection.style.display = 'none';
+            choiceSection.style.display = 'none';
+            yesSection.style.display = 'block';
+        }
+
+        function showNo() {
+            mainContainer.innerHTML = noSection.innerHTML;
+        }
+
+        // Adiciona um "ouvinte" ao formulário para quando for enviado
+        contactForm.addEventListener('submit', (event) => {
+            // 1. Impede o comportamento padrão de recarregar a página
+            event.preventDefault();
+
+            const submitButton = contactForm.querySelector('.submit-button');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+            
+            // 2. Coleta os dados do formulário
+            const formData = new FormData(contactForm);
+
+            // 3. Envia os dados para a Netlify em segundo plano
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // 4. Se o envio der certo, esconde o formulário e mostra a mensagem de agradecimento
+                mainContainer.innerHTML = thankYouSection.innerHTML;
+            })
+            .catch((error) => {
+                // 5. Se der erro, avisa o usuário
+                alert('Ocorreu um erro ao enviar. Por favor, tente novamente.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Enviar Sugestões para o João';
+            });
+        });
+    </script>
+
+</body>
+</html>
