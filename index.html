@@ -73,44 +73,16 @@
         }
         .btn-yes { background-color: #28a745; color: white; }
         .btn-no { background-color: #dc3545; color: white; }
-        #yes-section, #no-section, #thank-you-section {
+        
+        #no-section, #thank-you-section {
             display: none;
         }
-        #yes-section { text-align: left; }
-        .checklist {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-            columns: 2; 
-        }
-        .checklist li {
-            padding: 8px 0;
-            display: flex;
-            align-items: center;
-        }
-        .checklist input[type="checkbox"] {
-            margin-right: 12px;
-            width: 20px;
-            height: 20px;
-            accent-color: #007bff;
-        }
-        .checklist label {
-            color: #555;
-            font-size: 1em;
-        }
-        .submit-button {
-            display: block; width: fit-content; margin: 40px auto 10px; padding: 15px 30px; background-color: #007bff; color: #ffffff; border: none; text-decoration: none; font-weight: bold; font-size: 1.1em; border-radius: 50px; text-align: center; cursor: pointer; transition: all 0.3s ease;
-        }
-        .submit-button:hover { background-color: #0056b3; transform: scale(1.05); }
-        .submit-button:disabled { background-color: #aaa; cursor: not-allowed; }
         .whatsapp-button { display: inline-block; margin-top: 20px; padding: 15px 30px; background-color: #25D366; color: #ffffff; text-decoration: none; font-weight: bold; border-radius: 50px; transition: all 0.3s ease; }
         .whatsapp-button:hover { background-color: #128C7E; transform: scale(1.05); }
         
         @media (max-width: 600px) {
             body { padding: 0; }
             .container { border-radius: 0; margin: 0; min-height: 100vh; }
-            .content { padding: 25px 20px; }
-            .checklist { columns: 1; } 
             h1 { font-size: 1.8em; }
             p { font-size: 1em; }
         }
@@ -126,7 +98,7 @@
             <p>Au au! Quer dizer... oi! </p>                          
             <p>Meu nome é <strong>Eistein</strong> e sou o fiel escudeiro do <strong>João</strong>...</p>
             <p>
-            Eu vim aqui porque eu tô um pouco preocupado, nas últimas semanas ele ficou enrolado com os uns pedidos do orientador dele e não me deixava dormir direito, ficou acordado até as 2 da manhã escrevendo um tal de artigo ou algo assim, eu não entendo bem disso....</p>
+            Eu vim aqui porque eu tô um pouco preocupado, nas ultimas semanas ele ficou enrolado com os uns pedidos do orientador dele e não me deixava dormir direito, ficou acordado até as 2 da manhã escrevendo um tal de artigo ou algo assim, eu não entendo bem disso....</p>
             <p>
             Pra melhorar a situação ele recebeu umas respostas dos processos seletivos que ele tentou participar e ficou bem chateado, parece que os recrutadores não tem bom gosto para contratar (farejei isso enquanto ele lia essas coisas chamadas e-mails). Depois disso ele ficou bem triste e não conversava com ninguém, <strong>nem comigo!</strong> 
             </p>
@@ -135,46 +107,14 @@
             <p>
             Quando chega aqui em casa ele fica olhando pra conversa de vocês, ele abre a conversa mas não manda nada......(tadinho, ele é muito bundão).
             </p>
-            <p>
-            Eu acho que ele precisa sair para passear (eu gosto muito) pra conversar pessoalmente porque pelo celular o menino não leva muito jeito. Daquela vez que ele foi te ver, saiu todo empolgado daqui ele voltou bem alegrinho. 
-            </p>
-
         </div>
         
         <div id="choice-section">
-            <p><strong>Eu queria aproveitar o fio da meiada e te perguntar, só por curiosidade canina.... </p>
-            <p>Você gostaria de sair com ele de novo? Eu juro de patinha que ele não vai emocionar demais igual da última vez</strong></p>
+            <p><strong>Eu queria aproveitar o fio da meiada e te perguntar, só por curiosidade canina.... você gostaria de conversar com ele de novo? Eu juro de patinha que ele não vai emocionar igual da última vez</strong></p>
             <div class="choice-buttons">
                 <button id="btn-yes" class="btn btn-yes" onclick="showYes()">Com certeza!</button>
                 <button id="btn-no" class="btn btn-no" onclick="showNo()">Acho que não</button>
             </div>
-        </div>
-
-        <div id="yes-section">
-            <form id="contact-form" name="encontro" method="POST" data-netlify="true">
-                <input type="hidden" name="form-name" value="encontro" />
-                <h2>UAU! EU SABIA!</h2>
-                <p>Que demais! Agora preciso encontrar um jeito de avisar ele sobre isso, mas antes me dá uma patinha e marca aqui embaixo as coisas que você mais gostaria de fazer... assim eu aviso ele sobre um lugar bem legal pra vocês irem</p>
-                <ul class="checklist">
-                    <li><input type="checkbox" id="item1" name="atividades[]" value="Jantar romântico, mas sem emocionar demais"><label for="item1">Jantar romântico, mas sem emocionar demais</label></li>
-                    <li><input type="checkbox" id="item2" name="atividades[]" value="Piquenique no parque"><label for="item2">Piquenique no parque</label></li>
-                    <li><input type="checkbox" id="item3" name="atividades[]" value="Sessão de cinema (denovo kkkk)"><label for="item3">Sessão de cinema (denovo kkkk)</label></li>
-                    <li><input type="checkbox" id="item4" name="atividades[]" value="Tomar um sorvete"><label for="item4">Tomar um sorvete</label></li>
-                    <li><input type="checkbox" id="item5" name="atividades[]" value="Conhecer algum local de Uberlândia"><label for="item5">Conhecer algum local de Uberlândia</label></li>
-                    <li><input type="checkbox" id="item6" name="atividades[]" value="Ir a um bar com música baixa e que tenha suco de abacaxi"><label for="item6">Ir a um bar com música baixa e que tenha suco de abacaxi</label></li>
-                    <li><input type="checkbox" id="item7" name="atividades[]" value="Assistir algo no Teatro"><label for="item7">Assistir algo no Teatro</label></li>
-                    <li><input type="checkbox" id="item8" name="atividades[]" value="Visitar um museu ou exposição"><label for="item8">Visitar um museu ou exposição</label></li>
-                    <li><input type="checkbox" id="item9" name="atividades[]" value="Noite de jogos de tabuleiro"><label for="item9">Noite de jogos de tabuleiro</label></li>
-                    <li><input type="checkbox" id="item10" name="atividades[]" value="Tomar um café especial"><label for="item10">Tomar um café especial</label></li>
-                    <li><input type="checkbox" id="item11" name="atividades[]" value="Ir a uma livraria"><label for="item11">Ir a uma livraria</label></li>
-                    <li><input type="checkbox" id="item12" name="atividades[]" value="Observar as estrelas"><label for="item12">Observar as estrelas</label></li>
-                    <li><input type="checkbox" id="item13" name="atividades[]" value="Revisar materia de odonto (o João é um ótimo ouvinte)"><label for="item13">Revisar materia de odonto (o João é um ótimo ouvinte)</label></li>
-                    <li><input type="checkbox" id="item14" name="atividades[]" value="Boliche"><label for="item14">Boliche</label></li>
-                    <li><input type="checkbox" id="item15" name="atividades[]" value="Levar o cachorro pra passear (eu!)"><label for="item15">Levar o cachorro pra passear (eu!)</label></li>
-                </ul>
-                <p style="text-align: center; margin-top: 30px;">Agora clica aqui que eu vou tentar coverter pra cachorrês e avisar o João</p>
-                <button type="submit" class="submit-button">Enviar Sugestões via correios canino</button>
-            </form>
         </div>
 
         <div id="no-section">
@@ -186,7 +126,7 @@
         <div id="thank-you-section">
             <img src="https://i.imgur.com/Zt9Kuqa.jpeg" alt="Foto do cachorro" class="dog-photo">
             <h1 style="color: #28a745;">Missão Cumprida!</h1>
-            <p>Recebi a lista! Já estou mentalizando todas as dicas para enviar para o João por telepatia canina.</p>
+            <p>UAU! Já estou mentalizando a boa notícia para enviar para o João por telepatia canina.</p>
             <p>Enquanto ele não decifra meus sinais, se você quiser mandar um "oi" no WhatsApp dele eu tenho certeza que ele vai adorar (e ficar todo bobo). Eu vou tentar dar umas dicas de conversa online pra ele </p>
             <a href="https://wa.me/5534998600665?text=Oi%20João!%20Recebi%20uma%20ajudinha%20do%20Eistein..." class="whatsapp-button" target="_blank">Chamar o João no WhatsApp</a>
         </div>
@@ -195,83 +135,70 @@
     <script>
         const introSection = document.getElementById('intro-section');
         const choiceSection = document.getElementById('choice-section');
-        const yesSection = document.getElementById('yes-section');
+       
         const noSection = document.getElementById('no-section');
         const thankYouSection = document.getElementById('thank-you-section');
         const mainContainer = document.getElementById('main-container');
-        const contactForm = document.getElementById('contact-form');
         const btnYes = document.getElementById('btn-yes');
         const btnNo = document.getElementById('btn-no');
 
-
+        
         function showYes() {
-            // Desabilita os botões para evitar cliques duplos
-            btnYes.disabled = true;
-            btnNo.disabled = true;
-
-            introSection.style.display = 'none';
-            choiceSection.style.display = 'none';
-            yesSection.style.display = 'block';
-        }
-
-        // ***** INÍCIO DA ALTERAÇÃO *****
-        function showNo() {
-            // 1. Desabilita os botões para evitar cliques duplos
-            btnYes.disabled = true;
-            btnNo.disabled = true;
             
-            // 2. Prepara os dados para enviar ao Netlify
-            const formData = new URLSearchParams();
-            formData.append('form-name', 'encontro');
-            formData.append('escolha', 'Nao'); // Envia a informação de que a resposta foi "não"
+            btnYes.disabled = true;
+            btnNo.disabled = true;
 
-            // 3. Envia os dados em segundo plano
+            
+            const formData = new URLSearchParams();
+            formData.append('form-name', 'encontro'); 
+            formData.append('escolha', 'Sim'); 
+
+          
             fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: formData.toString()
             })
             .then(() => {
-                // 4. Se o envio der certo, mostra a mensagem de despedida
-                mainContainer.innerHTML = noSection.innerHTML;
+                
+                mainContainer.innerHTML = thankYouSection.innerHTML;
             })
             .catch((error) => {
-                 // 5. Se der erro no envio, ainda mostra a mensagem para não prejudicar a experiência
-                console.error('Erro ao enviar a resposta "não":', error);
-                mainContainer.innerHTML = noSection.innerHTML;
+                console.error('Erro ao enviar a resposta "sim":', error);
+                
+                mainContainer.innerHTML = thankYouSection.innerHTML;
             });
         }
-        // ***** FIM DA ALTERAÇÃO *****
-
         
-        contactForm.addEventListener('submit', (event) => {
-            
-            event.preventDefault();
 
-            const submitButton = contactForm.querySelector('.submit-button');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Enviando...';
+
+        function showNo() {
+            
+            btnYes.disabled = true;
+            btnNo.disabled = true;
             
             
-            const formData = new FormData(contactForm);
+            const formData = new URLSearchParams();
+            formData.append('form-name', 'encontro');
+            formData.append('escolha', 'Nao'); 
 
             
             fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
+                body: formData.toString()
             })
             .then(() => {
                 
-                mainContainer.innerHTML = thankYouSection.innerHTML;
+                mainContainer.innerHTML = noSection.innerHTML;
             })
             .catch((error) => {
-                
-                alert('Ocorreu um erro ao enviar. Por favor, tente novamente.');
-                submitButton.disabled = false;
-                submitButton.textContent = 'Enviar Sugestões para o João';
+                console.error('Erro ao enviar a resposta "não":', error);
+                mainContainer.innerHTML = noSection.innerHTML;
             });
-        });
+        }
+
+        
     </script>
 
 </body>
