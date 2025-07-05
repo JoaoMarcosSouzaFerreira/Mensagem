@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      line-height: 1.6;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 25px;
+      border: 1px solid #e1e1e1;
+      border-radius: 12px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .sim {
+      color: #28a745;
+      font-weight: bold;
+    }
+    .nao {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% if submission.data.escolha == "Sim" %}
+      <h1>Ótima notícia, João!</h1>
+      <p>A Thayná respondeu <strong class="sim">"Com certeza!"</strong> à sua mensagem.</p>
+      <p>Ela foi direcionada para a página com o seu WhatsApp. Agora é com você!</p>
+    {% else %}
+      <h1>Alerta de Resposta, João.</h1>
+      <p>A Thayná respondeu <strong class="nao">"Acho que não."</strong> à sua mensagem.</p>
+      <p>Não desanime, o importante é ter tentado! O Einstein já foi acionado para a operação "consolo com lambeijos".</p>
+    {% endif %}
+    <p class="footer">Esta é uma notificação automática do seu site no Netlify.</p>
+  </div>
+</body>
+</html>
