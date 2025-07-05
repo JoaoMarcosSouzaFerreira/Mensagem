@@ -40,11 +40,11 @@
             margin-bottom: 20px;
         }
         h1 { color: #333; font-size: 2em; }
+        h2 { color: #444; }
         p { color: #666; font-size: 1.1em; line-height: 1.6; }
         #choice-section {
             margin-top: 30px;
         }
-        /* Estilos para o novo formulário de rádio */
         .radio-options {
             display: flex;
             flex-direction: column;
@@ -66,16 +66,20 @@
             transition: all 0.2s ease;
         }
         .radio-options input[type="radio"] {
-            display: none; /* Esconde o botão de rádio padrão */
+            display: none;
         }
         .radio-options label:hover {
             background-color: #f7f7f7;
             border-color: #ccc;
         }
         .radio-options input[type="radio"]:checked + label {
-            background-color: #e0f2ff;
-            border-color: #007bff;
+            background-color: #e8f5e9;
+            border-color: #28a745;
             font-weight: bold;
+        }
+        .radio-options input[type="radio"].no-option:checked + label {
+            background-color: #ffebee;
+            border-color: #dc3545;
         }
         .submit-button {
             padding: 12px 28px;
@@ -84,14 +88,22 @@
             font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            background-color: #28a745; 
+            transition: all 0.2s ease;
+            background-color: #007bff; 
             color: white;
             margin-top: 20px;
         }
         .submit-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .submit-button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+        /* Divs ocultas para as mensagens de resultado */
+        #no-section, #thank-you-section {
+            display: none;
         }
         @media (max-width: 600px) {
             body { padding: 0; }
@@ -110,31 +122,88 @@
             <h1>Oi, Thayná!</h1>
             <p>Au au! Quer dizer... oi!</p>                          
             <p>Meu nome é <strong>Eistein</strong> e sou o fiel escudeiro do <strong>João</strong>...</p>
-            <p>Eu vim aqui porque eu tô um pouco preocupado, nas ultimas semanas ele ficou enrolado com os uns pedidos do orientador dele e não me deixava dormir direito, ficou acordado até as 2 da manhã escrevendo um tal de artigo ou algo assim, eu não entendo bem disso....</p>
+            <p>Eu vim aqui porque eu tô um pouco preocupado, nas ultimas semanas ele ficou enrolado com os uns pedidos do orientador dele e não me deixava dormir direito...</p>
             <p>Pra melhorar a situação ele recebeu umas respostas dos processos seletivos que ele tentou participar e ficou bem chateado, parece que os recrutadores não tem bom gosto para contratar (farejei isso enquanto ele lia essas coisas chamadas e-mails). Depois disso ele ficou bem triste e não conversava com ninguém, <strong>nem comigo!</strong></p>
-            <p>Hoje mais cedo ouvi ele pensando em voz alta que queria conversar com você denovo, mas estava com vergonha de te chamar depois de ficar um tempo sem mandar nada (cá entre nós, ele é meio bundão mesmo, outro dia eu fiquei parado <strong>meia hora</strong> perto dele e nada de receber carinho dele), ele não é muito bom de conversar por essas coisas de conversa por xat (acho que assim que chama, mas não tenho certeza).</p>
-            <p>Quando chega aqui em casa ele fica olhando pra conversa de vocês, ele abre a conversa mas não manda nada......(tadinho, ele é muito bundão).</p>
+            <p>Hoje mais cedo ouvi ele pensando em voz alta que queria conversar com você denovo, mas estava com vergonha de te chamar depois de ficar um tempo sem mandar nada (cá entre nós, ele é meio bundão mesmo).</p>
         </div>
         
         <div id="choice-section">
             <p><strong>Eu queria aproveitar o fio da meiada e te perguntar, só por curiosidade canina.... você gostaria de conversar com ele de novo? Eu juro de patinha que ele não vai emocionar igual da última vez</strong></p>
             
-            <form name="encontro" method="POST" data-netlify="true">
+            <form id="encontro-form" name="encontro" method="POST" data-netlify="true">
                 <div class="radio-options">
                     <div>
                         <input type="radio" name="escolha" value="Sim" id="radio-sim" required>
                         <label for="radio-sim">Com certeza!</label>
                     </div>
                     <div>
-                        <input type="radio" name="escolha" value="Nao" id="radio-nao">
+                        <input type="radio" name="escolha" value="Nao" id="radio-nao" class="no-option">
                         <label for="radio-nao">Acho que não.</label>
                     </div>
                 </div>
                 <button type="submit" class="submit-button">Enviar Resposta</button>
             </form>
-
-        </div>
         </div>
 
-    </body>
+        <div id="no-section">
+            <h2>Oh... entendi.</h2>
+            <p>Sem problemas! Às vezes as coisas não acontecem como a gente planeja. O importante é que você seja feliz!</p>
+            <p>Vou encher o <strong>João</strong> de lambeijos pra ele não ficar triste!</p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('encontro-form');
+        const mainContainer = document.getElementById('main-container');
+        const noSectionContent = document.getElementById('no-section').innerHTML;
+        const whatsAppUrl = 'https://wa.me/5534998600665?text=Oi%20João!%20Recebi%20uma%20ajudinha%20do%20Eistein...';
+
+        form.addEventListener('submit', (event) => {
+            // 1. Impede que o formulário seja enviado da forma tradicional
+            event.preventDefault();
+
+            const submitButton = form.querySelector('.submit-button');
+            const formData = new FormData(form);
+            const escolha = formData.get('escolha');
+
+            // Se nenhuma opção foi escolhida, não faz nada.
+            if (!escolha) {
+                alert('Por favor, selecione uma das opções.');
+                return;
+            }
+
+            // Desabilita o botão para evitar envios múltiplos
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+
+            // 2. Envia os dados para o Netlify em segundo plano
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // 3. Após o sucesso do envio, decide o que fazer
+                if (escolha === 'Sim') {
+                    // Se a resposta for "Sim", redireciona para o WhatsApp
+                    window.location.href = whatsAppUrl;
+                } else {
+                    // Se a resposta for "Não", mostra a mensagem de despedida
+                    mainContainer.innerHTML = noSectionContent;
+                }
+            })
+            .catch((error) => {
+                console.error('Erro ao enviar o formulário:', error);
+                // Mesmo se der erro, redireciona ou mostra a msg para não prejudicar a experiência
+                alert('Ocorreu um erro, mas não se preocupe, sua resposta será considerada!');
+                if (escolha === 'Sim') {
+                    window.location.href = whatsAppUrl;
+                } else {
+                    mainContainer.innerHTML = noSectionContent;
+                }
+            });
+        });
+    </script>
+
+</body>
 </html>
